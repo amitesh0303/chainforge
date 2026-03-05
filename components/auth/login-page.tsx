@@ -2,7 +2,7 @@
 import { signIn } from 'next-auth/react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useSignMessage } from 'wagmi';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -12,14 +12,7 @@ export function LoginPage() {
   const { address, isConnected } = useAccount();
   const { signMessageAsync } = useSignMessage();
 
-  useEffect(() => {
-    if (isConnected && address) {
-      handleWalletSignIn(address);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isConnected, address]);
-
-  async function handleWalletSignIn(addr: string) {
+  const handleWalletSignIn = useCallback(async (addr: string) => {
     const message = `Sign in to ChainForge Academy\n\nAddress: ${addr}\nTimestamp: ${new Date().toISOString()}`;
     try {
       const signature = await signMessageAsync({ message });
@@ -27,7 +20,13 @@ export function LoginPage() {
     } catch {
       // User rejected
     }
-  }
+  }, [signMessageAsync]);
+
+  useEffect(() => {
+    if (isConnected && address) {
+      handleWalletSignIn(address);
+    }
+  }, [isConnected, address, handleWalletSignIn]);
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center relative overflow-hidden">

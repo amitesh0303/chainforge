@@ -224,5 +224,7 @@ INSERT INTO problems (slug, title, description, difficulty, chain, initial_code,
 );
 
 -- Seed a sample active contest
+-- Note: start_time uses NOW() so the contest always appears 45 minutes in progress when seeded,
+-- making it immediately useful for development/testing purposes.
 INSERT INTO contests (title, start_time, duration_minutes, status) VALUES
 ('EVM Security Challenge #12', NOW() - INTERVAL '45 minutes', 120, 'active');
