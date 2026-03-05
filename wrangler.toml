@@ -1,0 +1,6 @@
+name = "chainforge-academy"
+compatibility_date = "2026-01-01"
+pages_build_output_dir = ".vercel/output/static"
+
+[vars]
+NEXTAUTH_URL = "https://chainforge.pages.dev"
