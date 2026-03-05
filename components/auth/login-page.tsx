@@ -65,7 +65,7 @@ export function LoginPage() {
               Forge Your Chain Skills
             </CardTitle>
             <CardDescription className="text-slate-400 text-base">
-              Master blockchain development across EVM, Solana &amp; Move
+              Master blockchain development across EVM, Solana & Move
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 pt-4">

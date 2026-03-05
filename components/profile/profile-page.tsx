@@ -60,7 +60,7 @@ export function ProfilePage() {
 
         <Tabs defaultValue="badges">
           <TabsList className="bg-slate-800/50 mb-6">
-            <TabsTrigger value="badges">Badges &amp; NFTs</TabsTrigger>
+            <TabsTrigger value="badges">Badges & NFTs</TabsTrigger>
             <TabsTrigger value="submissions">Submissions</TabsTrigger>
             <TabsTrigger value="stats">Stats</TabsTrigger>
           </TabsList>
